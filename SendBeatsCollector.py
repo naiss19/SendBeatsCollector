@@ -1,19 +1,20 @@
 import requests
 import json
-
+import Parser
 
 APIKey = "KZUnqVPCNcIMB5QjFoYCFzlNC"
 APIKeySecret = "SUPusochNvzaaPeY4NHocaaHS5vnD7fHO840X4TBzgT0g8fv1r"
 BearerToken = "AAAAAAAAAAAAAAAAAAAAAFygbAEAAAAA1log034O9FEfOB%2Fk9uma0QmP9K4%3DCigwVqJgG2FsXcIb5eFKykGNDUkCOi8DmqaLEcg9FHq0Wv56VQ"
 AccessToken = "1174342365911207938-LVttzOSiHD9mnXHZkOmy8Ntg6hBsBv"
 AccessTokenSecret = "VZcUA9NsxSJy4Bz1MAurDB4ulBZz87X4eXwPTQXi9nRrc"
+TwitterUsername = "SendBeatsBot"
 
 
 
 def create_url():
     # Replace with user ID below
-    user_id = 2244994945
-    return "https://api.twitter.com/2/users/{}/tweets".format(user_id)
+    user_id = 845840682644193280
+    return "https://api.twitter.com/2/users/{}/retweeted_by".format(user_id)
 
 def get_params():
     return {"tweet.fields": "author_id"}
@@ -36,13 +37,5 @@ def connect_to_endpoint(url, params):
         )
     return response.json()
 
+# def jsonReader(retweet):
 
-def main():
-    url = create_url()
-    params = get_params()
-    json_response = connect_to_endpoint(url, params)
-    print(json.dumps(json_response, indent=4, sort_keys=True))
-
-
-if __name__ == "__main__":
-    main()
